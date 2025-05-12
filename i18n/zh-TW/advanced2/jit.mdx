@@ -5,7 +5,7 @@ description: 教學：如何為需要它的應用程式啟用即時編譯 (Just-
 
 :::note
 
-有許多方法可以啟用 JIT，例如 AltJIT、SideJITServer 等。本教學將介紹使用 StikJIT/StikDebug 的方法，因為這是我們目前推薦的方法。作為替代，您也可以使用其他方法如 S[...]
+有許多方法可以啟用 JIT，例如 AltJIT、SideJITServer 等。本教學將介紹使用 StikJIT/StikDebug 的方法，因為這是我們目前推薦的方法。作為替代方案，SideStore 0.6.2-nightly.2025.04.15 也包含對 minimuxer 的更新，允許內建類似 StikDebug 的 JIT 功能。要使用此功能，只需確保您已連接到 StosVPN 並啟用 Wi-Fi，或者同時關閉行動數據和 Wi-Fi。
 
 :::
 
@@ -27,7 +27,7 @@ description: 教學：如何為需要它的應用程式啟用即時編譯 (Just-
 ## 使用 App Store 安裝 StikDebug（不需要應用程式安裝槽位）
 
 1. **安裝 StikDebug**  
-   從 App Store 安裝 StikDebug [點擊這裡](https://apps.apple.com/us/app/stikdebug/id6744045754)。一個好消息是，StikDebug 中的 VPN 與 SideStore 中使用的類似，這意味著您[...]
+   從 App Store 安裝 StikDebug [點擊這裡](https://apps.apple.com/us/app/stikdebug/id6744045754)。一個好消息是，StikDebug 中的 VPN 與 SideStore 中使用的類似，這意味著您可以使用這個去安裝和更新apps
 
 2. **安裝程序：**  
    按照以下使用指南中的標準安裝程序進行操作。
@@ -38,7 +38,7 @@ description: 教學：如何為需要它的應用程式啟用即時編譯 (Just-
    啟用 StikJIT 的 StosVPN 或 StikDebug 中內建的 VPN。
 
 2. **上傳配對文件：**  
-   當系統提示時，導入通過 JitterbugPair 獲取的相同 **解壓縮配對文件**，該文件也用於 SideStore。有關獲取此配對文件的更多信息，請參閱 [這裡](/docs/installation/pairing[...]
+   當系統提示時，導入通過 JitterbugPair 獲取的相同 **解壓縮配對文件**，該文件也用於 SideStore。有關獲取此配對文件的更多信息，請參閱 [這裡](/docs/installation/pairing
 
 ## 啟用 JIT：
 

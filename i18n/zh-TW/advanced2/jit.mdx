@@ -1,51 +1,52 @@
 ---
-title: Enabling JIT
-description: A tutorial on how to enable Just-in-Time (JIT) Compilation for apps that require it.
+title: 啟用 JIT
+description: 教學：如何為需要它的應用程式啟用即時編譯 (Just-in-Time, JIT)。
 ---
 
 :::note
 
-There are many methods to enabling JIT, such as AltJIT, SideJITServer, and more. This tutorial will cover the use of StikJIT/StikDebug, as it is the method we currently recommend. As an alternative, SideStore 0.6.2-nightly.2025.04.15 also includes updates to minimuxer, allowing built-in JIT functionality similar to StikDebug. To use this, simply ensure you are connected to StosVPN and Wi-Fi or with mobile data and Wi-Fi disabled.
+有許多方法可以啟用 JIT，例如 AltJIT、SideJITServer 等。本教學將介紹使用 StikJIT/StikDebug 的方法，因為這是我們目前推薦的方法。作為替代，您也可以使用其他方法如 S[...]
+
 :::
 
-## Prerequisites
-* An iDevice on iOS/iPadOS 17.4 or above, excluding 18.4b1. If you are on 17.0-17.3, you must use an alternative such as [SideJITServer](https://github.com/nythepegasus/SideJITServer)
-* At least 1 free app slot for StikJIT
+## 先決條件
+* 一台運行 iOS/iPadOS 17.4 或更高版本的 iDevice，但不包括 18.4b1。如果您使用的是 17.0-17.3，則必須使用其他替代方法，例如 [SideJITServer](https://github.com/nythepegasus/SideJITServer)
+* 至少有一個可用的應用程式安裝槽位，用於 StikJIT
 
-## StikJIT installation with SideStore
+## 使用 SideStore 安裝 StikJIT
    
-1. **Obtain StikJIT:**  
-   Add the StikJIT AltSource to SideStore [here](sidestore://source?url=https://raw.githubusercontent.com/StephenDev0/StikJIT/refs/heads/main/repo.json) (You must have SideStore installed or this link will not function).
+1. **獲取 StikJIT：**  
+   將 StikJIT AltSource 添加到 SideStore [點擊這裡](sidestore://source?url=https://raw.githubusercontent.com/StephenDev0/StikJIT/refs/heads/main/repo.json)（您必須已安裝 SideStore，否則此鏈接將無法使用[...]）
 
-2. **Install:**
-   Use SideStore to install StikJIT.
+2. **安裝：**
+   使用 SideStore 安裝 StikJIT。
 
-3. **Installation procedures:**
-   Follow the standard installation procedures in the usage guide below.
+3. **安裝程序：**
+   按照以下使用指南中的標準安裝程序進行操作。
 
-## StikDebug installation with App Store (Doesn't require an app slot)
+## 使用 App Store 安裝 StikDebug（不需要應用程式安裝槽位）
 
-1. **Install StikDebug**
-   Install StikDebug from the App Store [here](https://apps.apple.com/us/app/stikdebug/id6744045754). Something nice- the VPN present in StikDebug is similar to the one used in SideStore, meaning you use it to install and refresh apps as well.
+1. **安裝 StikDebug**  
+   從 App Store 安裝 StikDebug [點擊這裡](https://apps.apple.com/us/app/stikdebug/id6744045754)。一個好消息是，StikDebug 中的 VPN 與 SideStore 中使用的類似，這意味著您[...]
 
-2. **Installation procedures:**
-   Follow the standard installation procedures in the usage guide below.
+2. **安裝程序：**  
+   按照以下使用指南中的標準安裝程序進行操作。
 
-### Standard installation procedures:
+### 標準安裝程序：
 
-1. **Enable VPN:**  
-   Start by activating StosVPN for StikJIT or the built-in VPN in StikDebug.
+1. **啟用 VPN：**  
+   啟用 StikJIT 的 StosVPN 或 StikDebug 中內建的 VPN。
 
-2. **Upload the Pairing File:**  
-   When prompted, import the same **unzipped pairing file** obtained via JitterbugPair you use for SideStore. For more information on obtaining this pairing file, see [here](/docs/installation/pairing-file).
+2. **上傳配對文件：**  
+   當系統提示時，導入通過 JitterbugPair 獲取的相同 **解壓縮配對文件**，該文件也用於 SideStore。有關獲取此配對文件的更多信息，請參閱 [這裡](/docs/installation/pairing[...]
 
-## To enable JIT:
+## 啟用 JIT：
 
-1. **Enable VPN:**  
-   Start by activating StosVPN for StikJIT or the built-in VPN in StikDebug.
+1. **啟用 VPN：**  
+   啟用 StikJIT 的 StosVPN 或 StikDebug 中內建的 VPN。
    
-2. **Activate JIT:**  
-   Click the “Enable JIT” button and select an app from the list to activate the JIT functionality.
+2. **啟用 JIT：**  
+   點擊“啟用 JIT”按鈕，然後從列表中選擇一個應用程式以啟用 JIT 功能。
 
-### Offline JIT Enabling
-To enable JIT offline, enable the StosVPN VPN or StikDebug. Then, turn both Wi-Fi and Mobile Data OFF when you launch StikJIT (use Airplane Mode). You can then enable JIT as normal.
+### 離線啟用 JIT
+要離線啟用 JIT，請啟用 StosVPN 或 StikDebug 的 VPN。然後在啟動 StikJIT 時將 Wi-Fi 和行動數據全部關閉（可使用飛航模式）。之後即可正常啟用 JIT。

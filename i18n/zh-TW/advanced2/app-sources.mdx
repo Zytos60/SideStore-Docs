@@ -1,22 +1,22 @@
 ---
 title: App Sources
-description: A guide on custom app sources.
+description: 關於自定義應用來源的指南。
 ---
 
-# Make a Source
+# 創建一個來源
 
-SideStore is fully compatible with AltSources. The official AltStore [source documentation](https://faq.altstore.io/developers/make-a-source) provides all the details you need to make your own AltSource. AltSources allow your audience to view, install, and update all your available apps easily across both AltStore and SideStore.
+SideStore 完全兼容 AltSources。官方的 AltStore [來源文檔](https://faq.altstore.io/developers/make-a-source) 提供了創建您自己的 AltSource 所需的所有詳細信息。
 
-When editing your source, it is highly recommended to create and view a draft of your changes using the [AltSource Browser](https://altsource.by.lao.sb/browse) to see a visual display of your source and correct any errors before finalizing and publishing changes to your source.
+在編輯您的來源時，強烈建議使用 [AltSource Browser](https://altsource.by.lao.sb/browse) 創建並查看您的更改草稿，以便可視化顯示您的來源並進行檢查。
 
-# Distributing your Source
+# 分發您的來源
 
-You can create a link to automatically add your AltSource by using this template: 
-```
-sidestore://source?url=[source url]
-```
-For more info, see [URL Schema](/docs/advanced/url-schema). It is often helpful to create the link to your AltSource in this format, then put it into a link shortener such as ```tinyurl.com```. However, if a user tries to use a sidestore:// link without SideStore already installed, it will crash, so some documentation may be helpful.
+您可以使用以下模板創建一個鏈接，來自動添加您的 AltSource：sidestore://source?url=[source url]
 
-## That's it!
+有關更多信息，請參閱 [URL Schema](/docs/advanced/url-schema)。通常建議以此格式創建您的 AltSource 鏈接，然後將其放入鏈接縮短器，例如 ```tinyurl.com```。然而，請謹慎選擇信任的鏈接縮短服務。
 
-Here are some good existing AltSources: The [official AltStore](https://apps.altstore.io) source, the [SideStore community](https://github.com/SideStore/Community-Source) source, the [StikJIT](https://raw.githubusercontent.com/StephenDev0/StikJIT/refs/heads/main/repo.json) source, and the [DolphiniOS](https://altstore.oatmealdome.me) source.
+## 就這樣！
+
+以下是一些不錯的現有 AltSources： [官方 AltStore](https://apps.altstore.io)、[SideStore 社群](https://github.com/SideStore/Community-Source)、[StikJIT](https://stikjit.com) 、[DolphineOS](https://altstore.oatmealdome.me/)。
+
+

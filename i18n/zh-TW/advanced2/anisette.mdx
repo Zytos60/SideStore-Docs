@@ -1,115 +1,115 @@
 ---
-title: Custom Anisette Server
-description: A guide on anisette servers.
+title: 自訂 Anisette 伺服器
+description: 有關 Anisette 伺服器的指南。
 ---
 
 :::note
-Using any SideStore version after 0.4.0 is unlikely to lock your account as this is when support for v3 anisette servers was added.
+使用 0.4.0 之後的任何 SideStore 版本都不太可能鎖定您的帳戶，因為此版本新增了對 v3 Anisette 伺服器的支援。
 
-With this, it is **highly recommended** to use a v3 server for normal use of SideStore, if your version supports it.
+因此，**強烈建議** 如果您的版本支援，請使用 v3 伺服器以正常使用 SideStore。
 :::
 
-Anisette data is information used in the app signing process that needs to be generated each time you install or refresh apps. SideStore gets this information from a server that spoofs a Mac and sends you back the anisette data. No account info is sent to the server ever in this process.
+Anisette 資料是用於應用程式簽名過程的信息，每次安裝或刷新應用程式時都需要生成。SideStore 從模擬 Mac 的伺服器獲取此信息，並發送至 Apple 的伺服器，用於驗證您的帳戶。
 
-When many people use the same Anisette server (specifically a v1 server), it trips Apple's security, and locks the accounts that were using that machine. This is why we recommend using a separate burner Apple ID instead of your main one.
+當許多人使用相同的 Anisette 伺服器（特別是 v1 伺服器）時，會觸發 Apple 的安全機制，並鎖定使用該機器的帳戶。這就是為什麼我們建議使用單獨的燒錄帳戶來避免主帳戶被鎖定。
 
-Our team has worked on better approaches to avoid locked accounts (in the form of _anisette-v3_). However, if you are using an older version of SideStore, hosting your own anisette server is a great way to avoid locked accounts. This is made incredibly easy thanks to our current server being open source and made for docker environments. This means we can deploy a server with nothing more than the GitHub link.
+我們的團隊已經開發出更好的方法來避免帳戶被鎖定（以 _anisette-v3_ 的形式）。然而，如果您使用的是舊版本的 SideStore，託管自己的 Anisette 伺服器是一個不錯的選擇。
 
-## Deploy on Render
+## 在 Render 上部署
 
-[Render](https://render.com/) is a service for easily creating servers. It supports loading server sources from GitHub. The free tier is quite limited in terms of resources, but the server can run comfortably on it without issue.
+[Render](https://render.com/) 是一個可以輕鬆創建伺服器的服務。它支援從 GitHub 加載伺服器源代碼。免費層在資源方面非常有限，但伺服器可以正常執行，足以用於 SideStore。
 
-Due to too many people using the same GitHub URL, you will have to fork the Git repository yourself.
+由於太多人使用相同的 GitHub URL，您需要自己分叉 (fork) Git 儲存庫。
 
-1. [Register](https://github.com/signup) for a GitHub account, if you do not already have one.
-2. [Open](https://github.com/Dadoum/anisette-v3-server) the Git repository.
-3. Click "Fork" in the top right, and fork the repository to your account.
-4. Once the forked repository is created, click the green "Code" dropdown in the top right, and copy the .git URL.
+1. 如果您尚未註冊 [GitHub 帳戶](https://github.com/signup)，請進行註冊。
+2. [開啟 Git 儲存庫](https://github.com/Dadoum/anisette-v3-server)。
+3. 點擊右上角的 "Fork"，將儲存庫分叉到您的帳戶。
+4. 當分叉的儲存庫建立完成後，點擊右上角的綠色 "Code" 下拉菜單，然後複製 .git URL。
 
-* Save this for later.
+* 將其保存以備後用。
 
-Once this is done, the Render server can be made.
+完成後，即可創建 Render 伺服器。
 
-1. [Register](https://dashboard.render.com/register/) for an account.
-2. Create a [New Web Service](https://dashboard.render.com/select-repo?type=web).
-3. Scroll down to **Public Git repository** and enter the URL you copied earlier.
-4. Click "Continue" and fill in the form:
-    * **Name** - Does not matter
-    * **Region** - Closest to you
-    * **Branch** - main (default)
-    * **Root Directory** - blank (default)
-    * **Environment** - Docker (default)
+1. [註冊](https://dashboard.render.com/register/) 一個帳戶。
+2. 創建一個 [新的 Web 服務](https://dashboard.render.com/select-repo?type=web)。
+3. 滾動到 **Public Git repository** 並輸入您之前複製的 URL。
+4. 點擊 "Continue"，然後填寫表單：
+    * **Name** - 無所謂
+    * **Region** - 離您最近的地區
+    * **Branch** - main（預設）
+    * **Root Directory** - 留空（預設）
+    * **Environment** - Docker（預設）
     * **Instance Type** - Free
 
-5. Wait for the server to build. You will see the following when it's done:
+5. 等待伺服器構建完成。完成後，您會看到以下內容：
+```
+Machine requires provisioning... done ! Your service is live 🎉
 
 ```
-Machine requires provisioning... done !
-Your service is live 🎉
-```
 
-*If the build fails for any reason, click **Manual Deploy**, then **Deploy latest commit**.*
 
-6. Find the link for your new server at the top of the page:
+*如果構建因任何原因失敗，點擊 **Manual Deploy**，然後點擊 **Deploy latest commit**。*
 
+6. 在頁面頂部找到新伺服器的鏈接：
 ```
 https://[your-server-name].onrender.com
+
 ```
 
-## Creating a custom anisette server list
 
-Since the release of version 0.5.8, SideStore uses an anisette server list system so officially endorsed anisette servers can be added more easily. This means that there is a little bit of extra work to be done in order to use your own server without requesting to have yours added to the official list.
+## 建立自訂 Anisette 伺服器列表
 
-If you want to keep the option of using included servers, follow the steps below:
-1. Go [here](https://servers.sidestore.io/servers.json) to obtain the current server list.
-2. Head to a file hosting service of your choice to host the file on the internet. We recommend using GitHub Pages to do so as it's easier to edit in future, and will be the service used as example for this guide. If you have your own way of hosting, adapt the following to your setup.
-3. If you have a Github Pages site set up already, skip to the sixth sub-step. Otherwise, do the following:
-* Create a new GitHub repository via either the plus (+) button on the top right on desktop, profile icon > Create new on mobile, or [this page](https://github.com/new).
-* Set the name to be [your GitHub username].github.io, check 'Initialize this repository with a README', and set the remaining settings to how you wish.
-* Once created, go to the Settings tab and navigate to the Pages section under Code and automation.
-* Set Build and deployment under Source to 'Deploy from branch'
-* If not auto-selected, set Branch to 'main'
-* Return to the code tab and hit 'Add files', then 'Upload files', then select the 'servers.json' file you downloaded earlier.
-* Once uploaded, click on the file and hit the Edit button.
-* Scroll down to the last server on the list and add a comma after the last server's closing curly bracket ('}'), then add your own server afterwards in the following format:
+自 0.5.8 版本發布以來，SideStore 使用 Anisette 伺服器列表系統，因此可以更輕鬆地添加官方認可的 Anisette 伺服器。這意味著需要完成一些額外的工作來設置伺服器列表。
+
+如果您希望保留使用內置伺服器的選項，請按照以下步驟操作：
+1. 前往 [這裡](https://servers.sidestore.io/servers.json) 獲取當前伺服器列表。
+2. 前往您選擇的檔案託管服務，將檔案上傳到互聯網上。我們建議使用 GitHub Pages，因為將來更容易編輯，並且會用作示例。
+3. 如果您已經設置了 GitHub Pages 網站，請跳至第六個子步驟。否則，請執行以下操作：
+* 通過桌面右上角的加號（+）按鈕、移動端的個人資料圖標 > Create new，或[此頁面](https://github.com/new) 創建一個新的 GitHub 儲存庫。
+* 將名稱設置為 [您的 GitHub 使用者名稱].github.io，選中 "Initialize this repository with a README"，並根據需要設置其餘設置。
+* 創建完成後，轉到 "Settings" 標籤，然後導航到 "Pages" 部分（位於 "Code and automation" 下方）。
+* 將 "Source" 下的 "Build and deployment" 設置為 "Deploy from branch"。
+* 如果未自動選擇，將 "Branch" 設置為 "main"。
+* 返回 "Code" 標籤，點擊 "Add files"，然後點擊 "Upload files"，選擇您之前下載的 "servers.json" 檔案。
+* 上傳完成後，點擊檔案並點擊 "Edit" 按鈕。
+* 滾動到列表中最後一個伺服器，並在最後一個伺服器的閉合大括號（'}'）後添加逗號，然後按照以下格式添加您自己的伺服器：
+{ "name": "[某些可識別的名稱，例如用戶名]", // 除非您與他人共享此伺服器列表，否則無需在意 "address": "[您的伺服器 URL]" }
+
+* 提交更改，然後前往 https://[您的 GitHub 使用者名稱].github.io/[您放置檔案的位置]/servers.json。如果檔案載入成功，您就可以繼續進行下一部分。否則，您可能需要檢查設置是否正確。
+
+如果您只希望使用自己的伺服器，請按照上面的步驟操作，但不要獲取官方的 servers.json，而是按照以下格式創建自己的檔案；
 ```
-{
-    "name": "[something identifiable like a username]",   //doesn't really matter unless you're sharing this server list with someone else
-    "address": "[your server's url]"
-}
+
+{ "servers": [ { "name": "[如上所述]", "address": "[如上所述]" } ] }
+
 ```
-* Commit the changes, then head to https://[your GitHub username].github.io/[where you placed the file]/servers.json. If the file loads, you are ready to move on to the next section. Otherwise, you may need to wait up to 10 mins for your site to be properly set up for use before you try again.
 
-If you want to only use your own server, follow the steps above, but instead of getting the official server.json, create your own using this formatting;
-```
-{
-    "servers": [
-        {
-            "name": "[as above]",
-            "address": "[also as above]"
-        }
-    ]
-}
-```
-and continue as normal.
+然後正常繼續。
 
-## Use your server with SideStore
+## 在 SideStore 中使用您的伺服器
 
-To use your newly created server list in the SideStore app, do the following:
+要在 SideStore 應用中使用您新創建的伺服器列表，請執行以下操作：
 
-1. Open the Settings tab in SideStore.
-2. Scroll down to the bottom and tap on 'Anisette Servers'.
-3. Tap on the list URL and replace it with the URL of your server list.
-4. Hit 'Refresh Servers', and select your own server from the updated list.
+1. 打開 SideStore 中的 "Settings" 標籤。
+2. 滾動到底部，點擊 "Anisette Servers"。
+3. 點擊列表 URL，將其替換為您的伺服器列表的 URL。
+4. 點擊 "Refresh Servers"，然後從更新的列表中選擇您自己的伺服器。
 
-## Done!
+## 完成！
 
-SideStore will now use your new custom anisette server.
+SideStore 現在將使用您新的自訂 Anisette 伺服器。
 
 
-## Links:
+## 連結：
 [<img src="https://uptime.sidestore.io/api/badge/4/uptime/48" />](https://uptime.sidestore.io/status/all)
-[All Official Anisette Servers Uptime](https://uptime.sidestore.io/status/all)
+[所有官方 Anisette 伺服器的正常運行時間](https://uptime.sidestore.io/status/all)
 
 [<img src="https://uptime.sidestore.io/api/badge/1/uptime/48" />](https://uptime.sidestore.io/status/ss)
-[Our Official Anisette Server's Uptime](https://uptime.sidestore.io/status/ss)
+[我們的官方 Anisette 伺服器的正常運行時間](https://uptime.sidestore.io/status/ss)
+
+
+
+
+
+
+
